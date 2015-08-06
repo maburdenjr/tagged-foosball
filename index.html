@@ -22,7 +22,7 @@
             <h3>Add New Game</h3>
             <div class="well">
                 <form id="newGame">
-                    <div class="row">
+                    <div class="row ng-cloak" ng-if="formErrors == true">
                         <div class="col-md-12">
                             <div class="alert alert-danger">Oh snap!  We've detected some invalid entries.  Change a few
                                 things up and try submitting again.</div>
@@ -32,25 +32,52 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Player 1</label>
-                                    <input id="#player1" type="text" class="form-control" placeholder="Name">
+                                    <input id="player1" type="text" class="form-control" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <input id="#player1-score"  type="text" class="form-control numeric" placeholder="Score">
+                                    <input id="player1-score"  type="text" class="form-control numeric" placeholder="Score">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Player 2</label>
-                                    <input id="#player2"  type="text" class="form-control" placeholder="Name">
+                                    <input id="player2"  type="text" class="form-control" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <input id="#player2-score"  type="text" class="form-control numeric" placeholder="Score">
+                                    <input id="player2-score"  type="text" class="form-control numeric" placeholder="Score">
                                 </div>
                             </div>
                         </div>
                     <button class="btn btn-primary" data-ng-click="submitForm()">Save</button>
                 </form>
             </div>
+        </div>
+        <div class="row">
+            <h3>Scoreboard</h3>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Player 1</th>
+                    <th>Score</th>
+                    <th>Player 2</th>
+                    <th>Score</th>
+                    <th>Winner</th>
+                    <th>Options</th>
+                </th>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="item in scores" class="ng-cloak">
+                        <td>{{$index}}</td>
+                        <td>{{item.player1}}</td>
+                        <td>{{item.score1}}</td>
+                        <td>{{item.player2}}</td>
+                        <td>{{item.score2}}</td>
+                        <td>{{item.score1 > item.score2 ? item.player1 : item.player2}}</td>
+                        <td><a>edit</a> | <a class="deleteGame" data-index="{{$index}}">delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
