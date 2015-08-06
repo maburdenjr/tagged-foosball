@@ -19,6 +19,23 @@
             <h1 class="page-header">if(we) Foosball Rating System</h1>
         </div>
         <div class="row">
+            <h3>Leaderboard</h3>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="item in leaderboard" class="ng-cloak">
+                    <td>{{item.player}}</td>
+                    <td>{{item.score}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
             <h3>Add New Game</h3>
             <div class="well">
                 <form id="newGame">
@@ -35,7 +52,7 @@
                                     <input id="player1" type="text" class="form-control" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <input id="player1-score"  type="text" class="form-control numeric" placeholder="Score">
+                                    <input id="player1-score"  type="text" class="form-control numeric" placeholder="Score" ng-model="val1" numbers-only="numbers-only">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -44,11 +61,11 @@
                                     <input id="player2"  type="text" class="form-control" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <input id="player2-score"  type="text" class="form-control numeric" placeholder="Score">
+                                    <input id="player2-score"  type="text" class="form-control numeric" placeholder="Score" ng-model="val2" numbers-only="numbers-only">
                                 </div>
                             </div>
                         </div>
-                    <button class="btn btn-primary" data-ng-click="submitForm()">Save</button>
+                    <button class="btn btn-primary" data-ng-click="submitForm('newGame')">Save</button>
                 </form>
             </div>
         </div>
@@ -64,17 +81,17 @@
                     <th>Score</th>
                     <th>Winner</th>
                     <th>Options</th>
-                </th>
+                </tr>
                 </thead>
                 <tbody>
                     <tr data-ng-repeat="item in scores" class="ng-cloak">
                         <td>{{$index}}</td>
                         <td>{{item.player1}}</td>
-                        <td>{{item.score1}}</td>
+                        <td><input type="text" class="score" ng-model="item.score1" numbers-only="numbers-only"></td>
                         <td>{{item.player2}}</td>
-                        <td>{{item.score2}}</td>
+                        <td><input type="text" class="score" ng-model="item.score2" numbers-only="numbers-only"></td>
                         <td>{{item.score1 > item.score2 ? item.player1 : item.player2}}</td>
-                        <td><a>edit</a> | <a class="deleteGame" data-index="{{$index}}">delete</a></td>
+                        <td><a class="delete-game" data-index="{{$index}}">delete</a></td>
                     </tr>
                 </tbody>
             </table>
