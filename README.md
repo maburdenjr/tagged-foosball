@@ -1,4 +1,4 @@
-# TaggedFront-End Coding Challenge
+# Tagged Front-End Coding Challenge
 
 At Tagged we love foosball. Arguments over who is the best are settled on the table, but nobody can remember the scores from weeks ago. We need a way to track the results and for everyone to see who is the current king.
 
@@ -20,4 +20,4 @@ Create a simple application that tracks foosball ratings. You should be able to:
 
 ### Screenshot of Completed Challenge
 
-[!Tagged Foosball Ratings](https://github.com/maburdenjr/tagged-foosball/blob/master/assets/images/screenshot.png)s
+![Tagged Foosball Ratings](https://github.com/maburdenjr/tagged-foosball/blob/master/assets/images/screenshot.png)
